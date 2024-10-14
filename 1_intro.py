@@ -3,7 +3,7 @@ a = float(10.5)
 b = 5
 c = a * b
 
-# Operasi (Operation) -> tambath (+), kurang (-), bagi(/), kali(*), modulo(%), pangkat (**)
+# Operasi (Operation) -> tambah (+), kurang (-), bagi(/), kali(*), modulo(%), pangkat (**)
 print(a)
 print(b)
 print(c)
