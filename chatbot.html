@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatbot</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edfdfc;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .chat-container {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgb(79, 140, 83);
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 3px 0;
+        }
+        #chatOutput {
+            border: 1px solid #032529;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #f9ebdb;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #d40202;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #e0b012;
+            color: rgb(139, 47, 47);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #68edff;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>CHATBOT</h1>
+        <h2>pet's name</h2>
+        <div id="chatOutput"></div>
+        <div style="display: flex;">
+            <input id="userInput" type="text" placeholder="Type something...">
+            <button id="sendBtn">send</button>
+        </div>
+    </div>
+
+    <py-script>
+        from pyscript import Element
+
+        def respond(event):
+            user_input = Element('userInput').element.value.lower()
+            if "halo" in user_input:
+                response = "Halo ada yang bisa saya bantu?"
+            elif "hai" in user_input:
+                response = "Haii ada yang bisa saya bantu?"
+            elif "apa kabar" in user_input:
+                response = "Saya baik-baik saja, terima kasih!"
+            elif "rekomendasi" in user_input:
+                response = "Hewan peliharaan apa yang anda miliki?"
+            elif "kucing" in user_input:
+                response = """Berikut rekomendasi nama untuk kucing anda:
+                              <ul>
+                                  <li>Milo</li>
+                                  <li>Neko</li>
+                                  <li>Kiki</li>
+                                  <li>Loki</li>
+                                  <li>Tara</li>
+                              </ul>"""
+            elif "anjing" in user_input:
+                response = """Berikut rekomendasi nama untuk anjing anda:
+                              <ul>
+                                  <li>Chiko</li>
+                                  <li>Belo</li>
+                                  <li>Snowy</li>
+                                  <li>Midnight</li>
+                                  <li>Simba</li>
+                              </ul>"""
+            elif "burung" in user_input:
+                response = """Berikut adalah rekomendasi nama untuk burung:
+                              <ul>
+                                  <li>Sky</li>
+                                  <li>Sunny</li>
+                                  <li>Lola</li>
+                                  <li>Kiwi</li>
+                                  <li>Pepper</li>
+                              </ul>"""
+            elif "ikan" in user_input:
+                response = """Berikut rekomendasi nama untuk ikan anda:
+                              <ul>
+                                  <li>Lucky</li>
+                                  <li>Nemo</li>
+                                  <li>Bubbles</li>
+                                  <li>Suki</li>
+                                  <li>Yoda</li>
+                              </ul>"""
+            
+            elif "kata kata hari ini" in user_input:
+                response = "Jangan menyerah, tetaplah semangat karena masih banyak cobaan yang kau cobain😎"
+            elif "lagi dong" in user_input:
+                response = "Kegagalan bukan untuk ditakuti, melainkan untuk dipelajari"
+            else:
+                response = "Maaf, saya tidak mengerti."
+
+            Element('chatOutput').element.innerHTML += f"<p><strong>User:</strong> {user_input}</p>"
+            Element('chatOutput').element.innerHTML += f"<p><strong>Bot:</strong> {response}</p>"
+            Element('userInput').element.value = ""
+
+        Element('sendBtn').element.onclick = respond
+    </py-script>
+</body>
+</html>
